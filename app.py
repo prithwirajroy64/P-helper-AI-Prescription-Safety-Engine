@@ -727,5 +727,6 @@ if __name__ == "__main__":
     # Pre-warm ML pipeline at startup
     print("[P-helper] Initializing ML/NLP pipeline...")
     get_pipeline()
-    print("[P-helper] Starting server on http://localhost:5000")
-    app.run(debug=False, port=5000, use_reloader=False)
+    print("[P-helper] Starting server on ....")
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
