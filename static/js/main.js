@@ -206,7 +206,7 @@ async function runAnalysis() {
 
   btn.disabled = false;
   document.getElementById('spinner').style.display = 'none';
-  document.getElementById('btnText').textContent = '⚡ Analyze with ML/NLP';
+  document.getElementById('btnText').textContent = '⚡ Analyze Prescription';
 }
 
 // ── Quick Summary Panel ──

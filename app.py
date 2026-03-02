@@ -466,7 +466,7 @@ def _generate_html_report(analysis):
 
     return f"""<!DOCTYPE html>
 <html><head><meta charset="UTF-8">
-<title>P-helper ML Report — {ts[:10]}</title>
+<title>P-helper AI Report — {ts[:10]}</title>
 <style>
   @media print{{.no-print{{display:none}}body{{margin:0;padding:20px}}}}
   body{{font-family:-apple-system,Arial,sans-serif;max-width:1100px;margin:0 auto;padding:32px;color:#1e293b;background:#f8faff}}
@@ -491,7 +491,7 @@ def _generate_html_report(analysis):
   <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
 </div>
 <div class="header">
-  <h1>💊 P-helper — AI Prescription Safety Report <span class="ml-badge">ML ENHANCED</span></h1>
+  <h1>💊 P-helper — AI Prescription Safety Report</h1>
   <p>Generated: {datetime.datetime.now().strftime('%B %d, %Y %H:%M')} &nbsp;|&nbsp;
      {len(drugs)} drugs analyzed &nbsp;|&nbsp; Risk: <strong>{risk}</strong> (score: {scores.get('score','?')}/100) &nbsp;|&nbsp;
      APIs: {analysis.get('api_sources',[''])[0] if analysis.get('api_sources') else '—'}</p>
@@ -531,14 +531,9 @@ def _generate_html_report(analysis):
   </table>
 </div>
 
-<div class="section">
-  <div class="st">⚗️ ML Models Used</div>
-  <table>{''.join(f"<tr><td>✓</td><td>{m}</td></tr>" for m in ml.get('models_used',[]))}</table>
-</div>
-
 <div class="footer">
-  P-helper AI Engine v2.0 &nbsp;|&nbsp; Clinical decision support only — not a substitute for professional pharmacist judgment<br>
-  API Sources: OpenFDA · RxNorm · RxClass &nbsp;|&nbsp; ML: scikit-learn LogReg · GradientBoosting · Complement Naive Bayes · TF-IDF NER
+  P-helper AI Engine &nbsp;|&nbsp; API Sources: OpenFDA · RxNorm · RxClass &nbsp;|&nbsp; 
+  The AI might be incorrect.
 </div>
 </body></html>"""
 
@@ -730,3 +725,4 @@ if __name__ == "__main__":
     print("[P-helper] Starting server on ....")
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+    # app.run(debug=True, port=5005, use_reloader=True)
